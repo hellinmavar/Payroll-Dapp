@@ -24,7 +24,6 @@ const nextConfig: NextConfig = {
       ...(config.resolve.alias || {}),
       "@": path.resolve(__dirname),
       "@hooks": path.resolve(__dirname, "hooks"),
-      "@fhevm": path.resolve(__dirname, "fhevm"),
       "@abi": path.resolve(__dirname, "abi"),
     };
     return config;
