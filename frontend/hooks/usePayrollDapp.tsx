@@ -220,7 +220,8 @@ export const usePayrollDapp = (parameters: {
         );
 
         setMessage("Salary decrypted successfully!");
-        return res[encryptedHandle];
+        const decrypted = (res as Record<string, string | bigint | boolean>)[encryptedHandle];
+        return decrypted;
       } catch (error) {
         setMessage(`Decryption error: ${error instanceof Error ? error.message : String(error)}`);
         return null;
