@@ -10,6 +10,8 @@ const nextConfig: NextConfig = {
   
   // Enable static export for GitHub Pages
   output: process.env.NEXT_EXPORT === "true" ? "export" : undefined,
+  trailingSlash: true,
+  reactStrictMode: true,
   
   // Disable image optimization for static export
   images: {
@@ -32,19 +34,20 @@ const nextConfig: NextConfig = {
   // Headers configuration (only works in server mode, not in static export)
   // For static export, these headers need to be set via GitHub Pages configuration
   headers() {
-    // Required by FHEVM 
+    // Required by FHEVM
     return Promise.resolve([
       {
-        source: '/',
+        source: "/:path*",
         headers: [
-          {
-            key: 'Cross-Origin-Opener-Policy',
-            value: 'same-origin',
-          },
-          {
-            key: 'Cross-Origin-Embedder-Policy',
-            value: 'require-corp',
-          },
+          { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+          { key: "Cross-Origin-Embedder-Policy", value: "require-corp" },
+        ],
+      },
+      {
+        source: "/:path*.wasm",
+        headers: [
+          { key: "Content-Type", value: "application/wasm" },
+          { key: "Cross-Origin-Embedder-Policy", value: "require-corp" },
         ],
       },
     ]);

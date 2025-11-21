@@ -2,11 +2,11 @@
 pragma solidity ^0.8.24;
 
 import {FHE, euint32, externalEuint32} from "@fhevm/solidity/lib/FHE.sol";
-import {SepoliaConfig} from "@fhevm/solidity/config/ZamaConfig.sol";
+import {ZamaEthereumConfig} from "@fhevm/solidity/config/ZamaConfig.sol";
 
 /// @title PayrollDapp - Encrypted Payroll Management System
 /// @notice A privacy-preserving payroll system using FHEVM for encrypted salary calculations and payments
-contract PayrollDapp is SepoliaConfig {
+contract PayrollDapp is ZamaEthereumConfig {
     //   Role Definition  
     bytes32 public constant SUPER_ADMIN_ROLE = keccak256("SUPER_ADMIN_ROLE");
     bytes32 public constant FINANCE_ADMIN_ROLE = keccak256("FINANCE_ADMIN_ROLE");
